@@ -7,5 +7,10 @@ dist
 *.local
 .env
 
+output
+outputFinal
+*.zip
+*.rar
+
 .vscode/*
 !.vscode/extensions.json
