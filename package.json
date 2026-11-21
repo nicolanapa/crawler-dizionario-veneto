@@ -1,0 +1,15 @@
+{
+	"name": "crawler-dizionario-veneto",
+	"version": "1.0.0",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"startWatch": "node --watch ./src/index.js"
+	},
+	"author": "",
+	"license": "MIT",
+	"description": "",
+	"dependencies": {
+		"jsdom": "^27.3.0"
+	}
+}
