@@ -8,12 +8,22 @@ The output directory should weight around 16.4 MB with 39809 words (as of last t
 
 ## Features and changes from Sourced/Crawled Data
 
-#### Output Directory
-- data.html
-- - ...
-- data.json
-- words.json
-- localizations.json
+### Output Directory ./output/
+
+| File               | Description                                        | Other                                                                                                     |
+| :----------------- | -------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| data.html          | Internal CSS, one paragraph (\<p>) per word        | One paragraph includes a word, grammar structure, italian translation, english translation, localisations |
+| data.json          | JSON Object representation of data.html            | Object of words.json, localisations.json, translations.json                                               |
+| words.json         | JSON Array of venetian words                       | ex: ["a", "aa", "aaa", ...]                                                                               |
+| localisations.json | JSON Matrix of one or multiple "zones" per word    | ex: [["1", "2"], ["3"], ["2", "3", "4"], ...] where a number is a unique zone                             |
+| translations.json  | JSON Object made of "italian" and "english" arrays | ex: {"italian": ["a", "b, bb", "c"], "english": ["a", "b, bbb", "cc"]}                                    |
+
+<details> <summary>data.html</summary>
+
+aaa
+
+</details
+
 - translations.json
 - italianTranslations.json
 - englishTranslations.json
@@ -23,7 +33,6 @@ The output directory should weight around 16.4 MB with 39809 words (as of last t
 _The main code was completed by the end of December 2025. Further maintenance around November 2026 (git repo, proper README, upgrades to dependencies, etc...)._
 
 ---
-
 
 Instead of using a DB I'm using the File System to save useful Data in files
 Should I migrate the Project to an API and DB System to enhance data output and analysis?
