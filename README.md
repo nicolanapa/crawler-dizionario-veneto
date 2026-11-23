@@ -144,3 +144,10 @@ A venetian word is used in one, or more, specific parts of Veneto (one or multip
 - Dolomìtega
 
 ---
+
+## Copyright and the end of the README...
+
+The fetched data is publicly available on [elgalepin](https://www.elgalepin.com/) and it's theirs.
+This Project was made for the preservation of this great Dictionary. There are other similar Venetian dictionaries but those ones aren't as "deep" and large as this one.
+
+No AI was used for the code and this README.
