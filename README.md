@@ -8,17 +8,27 @@ The output directory should weight around 16.4 MB with 39809 words (as of last t
 
 ## How to run the Crawler
 
-...
+1. **Clone the Repo**
+    - The usual: `git clone https://github.com/nicolanapa/crawler-dizionario-veneto.git`
+2. **Run** **`npm install`**
+3. (**optional**) If needed you can change the **numberOfWordsToFetch parameter** of **querySite** found inside `./src/index.js (line 6)`
+    - The default number (39820) is the current maximum number of words that it can fetch (39809 actually).
+4. **Choose** your preferred way:
+    - **`npm run startWatch`**
+    - **`node run ./src/index.js`** if you're on the absolute path of the repo
+5. **Wait** until it is finished (may take a long time if the parameter numberOfWordsToFetch is a high number)
+    - Some console logs will appear to label every stage (fetching offset 0, 20, 40...).
+    - At the end everything is also printed in the console.
+6. You'll **find** everything in **./output/**
 
 ## Features and changes from Sourced/Crawled Data
 
-- Crawled Data is saved directly on the *File System* using node's **fs/promises**.
+- Crawled Data is saved directly on the _File System_ using node's **fs/promises**.
     - Less complexity over using a DBMS like PostgreSQL and at the same time more portability.
 - Everything is under one directory (**./output/**) and each time the Crawler creates both **JSON files** containing certain values (everything, only words, only translations, etc..) and a **HTML page** containing everything that it has fetched.
     - The HTML page may be useful for viewing certain words quickly (you can search for words using the usual browser's search word feature)
 - Only **one external dependency** has to be installed using `npm install`: **jsdom**. The Project is less complex.
-    - jsdom handles easily the DOM 
-
+    - jsdom handles easily the DOM
 
 ### Output Directory ./output/
 
@@ -35,6 +45,7 @@ An example of an Output Directory (the first [page](https://www.elgalepin.com/li
 | englishTranslations.json | JSON Array of english translations per word        |
 
 **More in details:**
+
 <details> <summary>data.html</summary>
 One paragraph includes a word, grammar structures, italian translations, english translations and localizations.
 </details>
