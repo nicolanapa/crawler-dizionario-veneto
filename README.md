@@ -6,37 +6,98 @@ It makes a local copy of the of the **Venetian Dictionary** and includes both **
 
 The output directory should weight around 16.4 MB with 39809 words (as of last testing, last year, probably hasn't changed).
 
+## How to run the Crawler
+
+...
+
 ## Features and changes from Sourced/Crawled Data
+
+- Crawled Data is saved directly on the *File System* using node's **fs/promises**.
+    - Less complexity over using a DBMS like PostgreSQL and at the same time more portability.
+- Everything is under one directory (**./output/**) and each time the Crawler creates both **JSON files** containing certain values (everything, only words, only translations, etc..) and a **HTML page** containing everything that it has fetched.
+    - The HTML page may be useful for viewing certain words quickly (you can search for words using the usual browser's search word feature)
+- Only **one external dependency** has to be installed using `npm install`: **jsdom**. The Project is less complex.
+    - jsdom handles easily the DOM 
+
 
 ### Output Directory ./output/
 
-| File               | Description                                        | Other                                                                                                     |
-| :----------------- | -------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| data.html          | Internal CSS, one paragraph (\<p>) per word        | One paragraph includes a word, grammar structure, italian translation, english translation, localisations |
-| data.json          | JSON Object representation of data.html            | Object of words.json, localisations.json, translations.json                                               |
-| words.json         | JSON Array of venetian words                       | ex: ["a", "aa", "aaa", ...]                                                                               |
-| localisations.json | JSON Matrix of one or multiple "zones" per word    | ex: [["1", "2"], ["3"], ["2", "3", "4"], ...] where a number is a unique zone                             |
-| translations.json  | JSON Object made of "italian" and "english" arrays | ex: {"italian": ["a", "b, bb", "c"], "english": ["a", "b, bbb", "cc"]}                                    |
+An example of an Output Directory (the first [page](https://www.elgalepin.com/linguaveneta-vec.asp?offset=0) of the dictionary has been included as a sample) can be found in **./outputSample/**.
 
+| File                     | Description                                        |
+| :----------------------- | -------------------------------------------------- |
+| data.html                | Internal CSS, one paragraph (\<p>) per word        |
+| data.json                | JSON Object representation of data.html            |
+| words.json               | JSON Array of venetian words                       |
+| localizations.json       | JSON Matrix of one or multiple "zones" per word    |
+| translations.json        | JSON Object made of "italian" and "english" arrays |
+| italianTranslations.json | JSON Array of italian translations per word        |
+| englishTranslations.json | JSON Array of english translations per word        |
+
+**More in details:**
 <details> <summary>data.html</summary>
+One paragraph includes a word, grammar structures, italian translations, english translations and localizations.
+</details>
 
-aaa
+<details> <summary>data.json</summary>
+An Object consisting of words.json, localizations.json and translations.json
+<br><br>
+Structure:
 
-</details
+```js
+{
+    "words": ["word1", "word2", ...],
+    "grammarStructures": ["structure of word1", "structure of word2", ...],
+    "translations":
+        {
+            "italian":["(italian) translation of word1", "translation of word2", ...],
+            "english":["(english) translation of word1", "translation of word2", ...]
+        },
+    "localizations":[["zone1 of word1", "zone2 of word1"], ["zone3 of word 2"], ...]
+}
+```
 
-- translations.json
-- italianTranslations.json
-- englishTranslations.json
+</details>
 
----
+<details> <summary>words.json</summary>
+Structure:
+
+```js
+["word1", "word2", ...]
+```
+
+</details>
+
+<details> <summary>localizations.json</summary>
+Structure:
+
+```js
+[["zone1 of word1", "zone2 of word1"], ["zone3 of word 2"], ...]
+```
+
+</details>
+
+<details> <summary>translations.json, italianTranslations.json and englishTranslations.json</summary>
+Structure of translations.json:
+
+```js
+{
+    "italian":["(italian) translation of word1", "translation of word2", ...],
+    "english":["(english) translation of word1", "translation of word2", ...]
+}
+```
+
+Structure of italianTranslations.json and englishTranslations.json:
+
+```js
+["(insert here correct language) translation of word1", "translation of word2", ...]
+```
+
+</details>
+
+## <br>
 
 _The main code was completed by the end of December 2025. Further maintenance around November 2026 (git repo, proper README, upgrades to dependencies, etc...)._
-
----
-
-Instead of using a DB I'm using the File System to save useful Data in files
-Should I migrate the Project to an API and DB System to enhance data output and analysis?
-The whole Project can be easily refactored into an Express Server (API) if wanted
 
 ---
 
