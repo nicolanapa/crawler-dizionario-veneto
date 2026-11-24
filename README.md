@@ -4,7 +4,7 @@ This Project is a Web Crawler that fetches/crawls data from "***https://www.elga
 <br>
 It makes a local copy of the of the **Venetian Dictionary** and includes both **italian** and **english** **_translations_** along the usual zone in which words are used (which I call "**_localizations_**").
 
-The output directory should weight around 16.4 MB with 39809 words (as of last testing, last year, probably hasn't changed).
+The output directory should weight around 16.4 MB with 39809 words (as of last testing, 24/11/2026, probably won't change).
 
 ## How to run the Crawler
 
@@ -21,6 +21,47 @@ The output directory should weight around 16.4 MB with 39809 words (as of last t
     - Some console logs will appear to label every stage (fetching offset 0, 20, 40...).
     - At the end everything is also printed in the console.
 6. You'll **find** everything in **./output/**
+
+### Running Example | Requirements
+
+If querySite(39820):
+
+Phase 1 (fetching through using the offset field):
+
+```
+Offset: 0 | 2026-11-24T00:5:24.775Z
+Offset: 20 | 2026-11-24T00:5:25.525Z
+Offset: 40 | 2026-11-24T00:5:26.205Z
+...
+Offset: 39760 | 2026-11-24T00:36:03.490Z
+Offset: 39780 | 2026-11-24T00:36:04.535Z
+Offset: 39800 | 2026-11-24T00:36:05.580Z
+```
+Near the end of Phase 1, RAM usage got near 3 GB (2.9 GB).
+As soon as Phase 2 started, when bodyInstance was emptied, RAM usage got down to around 210 MB and didn't change much afterwards.
+One possible solution is to handle the DOM as soon as an offset is fetched, instead of doing it at the end by using a large Array in one single for loop.
+
+Phase 2 (fetching every single word to get its translation and zones):
+
+```
+Offset: 0 | 2026-11-24T00:36:07.020Z
+
+Offset: 20 | 2026-11-24T00:36:08.342Z
+
+Offset: 40 | 2026-11-24T00:36:09.644Z
+...
+Offset: 39760 | 2026-11-24T01:19:44.811Z
+
+Offset: 39780 | 2026-11-24T01:19:46.109Z
+
+Offset: 39800 | 2026-11-24T01:19:47.394Z
+```
+
+_fetchIdsBody_: **43:40.952** (m:ss.mmm).
+
+_fullProcess_: **1:14:23.268** (h:mm:ss.mmm).
+
+**39809** _elements_.
 
 ## Features and changes from Sourced/Crawled Data
 
