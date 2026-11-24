@@ -45,15 +45,11 @@ Phase 2 (fetching every single word to get its translation and zones):
 
 ```
 Offset: 0 | 2026-11-24T00:36:07.020Z
-
 Offset: 20 | 2026-11-24T00:36:08.342Z
-
 Offset: 40 | 2026-11-24T00:36:09.644Z
 ...
 Offset: 39760 | 2026-11-24T01:19:44.811Z
-
 Offset: 39780 | 2026-11-24T01:19:46.109Z
-
 Offset: 39800 | 2026-11-24T01:19:47.394Z
 ```
 
