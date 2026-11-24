@@ -12,7 +12,8 @@ The output directory should weight around 16.4 MB with 39809 words (as of last t
     - The usual: `git clone https://github.com/nicolanapa/crawler-dizionario-veneto.git`
 2. **Run** **`npm install`**
 3. (**optional**) If needed you can change the **numberOfWordsToFetch parameter** of **querySite** found inside `./src/index.js (line 6)`
-    - The default number (39820) is the current maximum number of words that it can fetch (39809 actually).
+    - The default number (39820) is the current maximum number of words that it can fetch (39809 actually in the data).
+    - Offset [_39820_](https://www.elgalepin.com/linguaveneta-vec.asp?offset=39820) is the maximum since offset [_39840_](https://www.elgalepin.com/linguaveneta-vec.asp?offset=39840) and above keeps repeating.
 4. **Choose** your preferred way:
     - **`npm run startWatch`**
     - **`node run ./src/index.js`** if you're on the absolute path of the repo
